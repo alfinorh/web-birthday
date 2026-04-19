@@ -29,7 +29,7 @@
 
     <div class="container">
         <div class="card">
-            <h1 id="mainTitle" style="display:none;">Special for You 💞</h1>
+            <h1 id="mainTitle" style="display:none;">Special for Princess 💞</h1>
             
             <div id="greetingContainer">
                 <h1>Hello There! ❤️</h1>
@@ -106,7 +106,7 @@
             setTimeout(() => createExplosion(x, y - 150), 200);
         }
 
-               class Particle {
+        class Particle {
             constructor(x, y, isTrail = false) {
                 this.x = x; this.y = y; this.isTrail = isTrail;
                 if (isTrail) {
@@ -135,26 +135,24 @@
                 this.life -= this.decay;
             }
         }
-        
+
         function createExplosion(x, y) {
-            for (let i = 0; i < 35; i++) particles.push(new Particle(x, y));
+            for (let i = 0; i < 35; i++) particles.push(new Particle(x, y, false));
         }
 
         function loop() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((p, i) => { 
-                p.update(); p.draw(); 
-                if (p.life <= 0) particles.splice(i, 1); 
-            });
+            particles.forEach((p, i) => { p.update(); p.draw(); if (p.life <= 0) particles.splice(i, 1); });
             requestAnimationFrame(loop);
         }
 
+        window.addEventListener('mousemove', (e) => particles.push(new Particle(e.clientX, e.clientY, true)));
+        window.addEventListener('touchmove', (e) => particles.push(new Particle(e.touches[0].clientX, e.touches[0].clientY, true)));
+
         nextBtn.onclick = nextStep;
-        window.addEventListener('resize', () => { 
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight; 
-        });
         canvas.width = window.innerWidth; canvas.height = window.innerHeight;
         loop();
     </script>
 </body>
 </html>
+
