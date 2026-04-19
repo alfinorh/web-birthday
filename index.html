@@ -68,7 +68,7 @@
         function typeWriter(text, i, fnCallback) {
             if (i < text.length) {
                 textElement.innerHTML = text.substring(0, i + 1);
-                setTimeout(() => typeWriter(text, i + 1, fnCallback), 40);
+                setTimeout(() => typeWriter(text, i + 1, fnCallback), 100);
             } else if (fnCallback) setTimeout(fnCallback, 600);
         }
 
