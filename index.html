@@ -111,7 +111,7 @@
         function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resize); resize();
 
-        class Particle {
+      class Particle {
             constructor(x, y, isTrail = false) {
                 this.x = x; this.y = y; this.isTrail = isTrail;
                 if (isTrail) {
